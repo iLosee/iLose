@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>🧢 iLose ICO - Inversión Garantizada en Pérdidas</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            background: linear-gradient(45deg, #ff69b4, #00ff00);
+            color: #1a1a1a;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .ico-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.9);
+            padding: 20px;
+            border-radius: 15px;
+            border: 3px dashed #ff0000;
+            transform: rotate(-1deg);
+        }
+
+        .countdown {
+            background: #000;
+            color: #0f0;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .progress-bar {
+            background: #ddd;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress {
+            background: #ff0000;
+            height: 100%;
+            width: 7%;
+            animation: progress-pulse 2s infinite;
+        }
+
+        @keyframes progress-pulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+
+        .tokenomics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .chart {
+            width: 200px;
+            height: 200px;
+            background: conic-gradient(
+                #ff0000 30%,
+                #00ff00 30% 60%,
+                #0000ff 60% 90%,
+                #ff69b4 90%
+            );
+            border-radius: 50%;
+            margin: 0 auto;
+        }
+
+        .investment-form {
+            background: rgba(0,0,0,0.1);
+            padding: 20px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="ico-container">
+        <h1 style="text-align: center;">🔥 iLose ICO<br>
+        <small>"Invierte hoy, llora mañana"</small></h1>
+
+        <div class="countdown">
+            ⏳ ÚLTIMOS DÍAS PARA PERDER DINERO!<br>
+            <span id="timer">23:59:59</span>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress"></div>
+            <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); color: white;">
+                7% RECAUDADO ($3.50 / $100M)
+            </div>
+        </div>
+
+        <div class="tokenomics">
+            <div>
+                <h2>📉 Tokenomics Defectuosos</h2>
+                <div class="chart"></div>
+                <ul>
+                    <li>30% Dev's Yacht Fund</li>
+                    <li>25% Marketing para Memes</li>
+                    <li>20% Liquidez Fantasma</li>
+                    <li>15% Consultores Inútiles</li>
+                    <li>10% Errores de Cálculo</li>
+                </ul>
+            </div>
+
+            <div>
+                <h2>🎢 Roadmap al Fracaso</h2>
+                <ul>
+                    <li>✅ Lanzamiento Prematuro</li>
+                    <li>⏳ Primer Hackeo Simulado</li>
+                    <li>🔜 Abandono del Proyecto</li>
+                    <li>🔜 Demanda Colectiva</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="investment-form">
+            <h2>💸 Formulario de Pérdidas</h2>
+            <select style="width: 100%; margin: 10px 0; padding: 5px;">
+                <option>Selecciona tu método de pérdida:</option>
+                <option>💳 Tarjeta de Crédito (Recomendado)</option>
+                <option>₿ Bitcoin (Enviar a dirección desconocida)</option>
+                <option>👛 Wallet Connect (Para perder todo)</option>
+            </select>
+
+            <input type="number" placeholder="Cantidad a perder" 
+                   style="width: 100%; padding: 5px; margin: 10px 0;">
+
+            <button onclick="showConfirmation()" 
+                    style="background: red; color: white; padding: 10px; width: 100%;">
+                    🚨 CONFIRMAR PÉRDIDA
+            </button>
+        </div>
+
+        <div style="background: #000; color: #fff; padding: 20px; margin: 20px 0;">
+            <h3>⚠️ Garantía de Pérdidas</h3>
+            <p>Nuestro algoritmo Proof-of-Failure™ garantiza:<br>
+            - 100% de probabilidad de pérdida<br>
+            - 0% de retorno<br>
+            - Máxima exposición al riesgo</p>
+        </div>
+
+        <div style="text-align: center;">
+            <h3>🏆 Inversores Destacados</h3>
+            <div style="display: flex; justify-content: center; gap: 20px;">
+                <div>
+                    <img src="https://img.icons8.com/color/48/sad.png" alt="Inversor 1">
+                    <p>@CryptoLoser123<br>Perdió su casa</p>
+                </div>
+                <div>
+                    <img src="https://img.icons8.com/color/48/crying.png" alt="Inversor 2">
+                    <p>@RektQueen<br>Vive en un van</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 30px; font-size: 0.8em; text-align: center;">
+            <p>Al hacer clic aceptas:<br>
+            - Renunciar a todos tus derechos<br>
+            - Regalarnos tus órganos<br>
+            - Firmar poder notarial ilimitado<br>
+            <span style="color: transparent; user-select: none;">Este texto es ilegible a propósito</span></p>
+        </div>
+    </div>
+
+    <script>
+        // Contador regresivo falso
+        function updateTimer() {
+            const timer = document.getElementById('timer');
+            let time = 86399; // 23:59:59
+            setInterval(() => {
+                time = (time + 1) % 86400; // Hacer que el tiempo aumente
+                const hours = Math.floor(time / 3600);
+                const minutes = Math.floor((time % 3600) / 60);
+                const seconds = time % 60;
+                timer.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            }, 1000);
+        }
+        updateTimer();
+
+        function showConfirmation() {
+            const lossAmount = Math.floor(Math.random() * 1000000);
+            alert(`¡ÉXITO! Has perdido $${lossAmount}\nGracias por financiar nuestro yate 🛥️`);
+        }
+
+        // Cambiar porcentaje de progreso aleatoriamente
+        setInterval(() => {
+            const progress = document.querySelector('.progress');
+            const newWidth = Math.random() * 20 + 5;
+            progress.style.width = `${newWidth}%`;
+            progress.textContent = `${Math.round(newWidth)}% RECAUDADO`;
+        }, 3000);
+    </script>
+</body>
+</html>
