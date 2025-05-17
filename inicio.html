@@ -1,174 +1,113 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>🧢 iLose Careers - Únete al Equipo Perdedor</title>
-    <style>
-        body {
-            font-family: 'Comic Sans MS', cursive;
-            background: linear-gradient(45deg, #ff69b4, #00ff00);
-            color: #1a1a1a;
-            margin: 0;
-            padding: 20px;
-        }
-
-        .career-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: rgba(255,255,255,0.9);
-            padding: 20px;
-            border-radius: 15px;
-            border: 3px dashed #ff0000;
-            transform: rotate(-1deg);
-        }
-
-        .job-posting {
-            background: rgba(0,0,0,0.1);
-            padding: 15px;
-            margin: 15px 0;
-            border-left: 5px solid #ff0000;
-        }
-
-        .requirements {
-            list-style: none;
-            padding: 0;
-        }
-
-        .requirements li {
-            margin: 10px 0;
-            padding-left: 25px;
-        }
-
-        .requirements li::before {
-            content: '❌';
-            margin-right: 10px;
-        }
-
-        .salary {
-            color: #ff0000;
-            font-weight: bold;
-            text-shadow: 0 0 5px #ff0000;
-        }
-
-        .intern-alert {
-            animation: blink 1s infinite;
-            background: #ffff00;
-            padding: 10px;
-            text-align: center;
-        }
-
-        @keyframes blink {
-            50% { opacity: 0.3; }
-        }
-
-        .testimonial {
-            background: rgba(0,0,0,0.05);
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 10px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🧢 iLose – Ganan los que nunca ganan</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+      line-height: 1.6;
+    }
+    header {
+      background: #1e1e1e;
+      padding: 2rem;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+    .section {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    .highlight {
+      color: #ff5b5b;
+      font-weight: bold;
+    }
+    .box {
+      background: #1c1c1c;
+      padding: 1.5rem;
+      border-left: 5px solid #ff5b5b;
+      margin: 1rem 0;
+      border-radius: 8px;
+    }
+    footer {
+      background: #1e1e1e;
+      text-align: center;
+      padding: 1rem;
+      color: #999;
+      font-size: 0.9rem;
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+  </style>
 </head>
 <body>
-    <div class="career-container">
-        <h1 style="text-align: center;">🧢 Carreras en iLose<br>
-        <small>"Contratamos perdedores profesionales"</small></h1>
+  <header>
+    <h1>🧢 iLose</h1>
+    <p><strong>Por fin ganan los que nunca ganan nada.</strong></p>
+    <p>En un mundo donde siempre ganan los mismos...</p>
+    <p>
+      Tú, que nunca has ganado ni una rifa...<br />
+      Tú, que te caíste comprando cripto en el pico...<br />
+      Tú, que vendiste antes de que subiera...<br />
+      <span class="highlight">¡Por fin existe un sistema donde perder es ganar!</span>
+    </p>
+  </header>
 
-        <div class="intern-alert">
-            ⚠️ ABRIMOS PASANTÍAS ⚠️<br>
-            "Gana experiencia (pero no dinero)"
-        </div>
+  <div class="section">
+    <h2>🎯 ¿Qué es iLose?</h2>
+    <p>
+      iLose es la primera red que recompensa la <strong>mala suerte</strong>.<br />
+      Una cripto para los que siempre pierden.<br />
+      Aquí, cuanto más fracasas, <span class="highlight">más vales</span>.
+    </p>
+  </div>
 
-        <!-- Oferta 1 -->
-        <div class="job-posting">
-            <h2>👔 Professional Loser (Full-Time)</h2>
-            <ul class="requirements">
-                <li>Mínimo 5 fracasos comprobados en crypto</li>
-                <li>Experiencia comprando en ATH y vendiendo en ATL</li>
-                <li>Habilidad para perder documentos importantes</li>
-            </ul>
-            <p class="salary">Salario: Tus lágrimas + 10 iLose/hr</p>
-            <button onclick="alert('Error: Posición ya ocupada por nuestro CEO')">Aplicar</button>
-        </div>
+  <div class="section">
+    <h2>🔧 ¿Cómo funciona?</h2>
+    <p><strong>Algoritmo base:</strong> Proof of Misfortune (PoM)</p>
+    <p>Valida la red compartiendo tus fracasos cotidianos.</p>
 
-        <!-- Pasantía -->
-        <div class="job-posting">
-            <h2>🎓 Pasante No Remunerado</h2>
-            <ul class="requirements">
-                <li>Disponibilidad 24/7</li>
-                <li>Traer tu propia computadora (y café)</li>
-                <li>Firmar renuncia a derechos humanos</li>
-            </ul>
-            <p>Beneficios:<br>
-            - Certificado NFT (sin valor)<br>
-            - Posibilidad de no ser contratado</p>
-            <button onclick="alert('¡Éxito! Tu aplicación será ignorada')">Aplicar</button>
-        </div>
-
-        <!-- Testimonios -->
-        <div class="testimonial">
-            <h3>📌 Testimonio de Ex-Empleado</h3>
-            <p>"Trabajar aquí fue la peor decisión de mi vida... ¡Justo lo que buscaban! ★☆☆☆☆"<br>
-            - John Doe (Ahora en bancarrota)</p>
-        </div>
-
-        <!-- Oferta 2 -->
-        <div class="job-posting">
-            <h2>💣 Coordinador de Fracasos</h2>
-            <ul class="requirements">
-                <li>Habilidad para estropear proyectos exitosos</li>
-                <li>Experiencia en liderar meetings inútiles</li>
-                <li>Maestría en excusas creativas</li>
-            </ul>
-            <p class="salary">Paquete de compensación:<br>
-            - Sueldo decreciente cada mes<br>
-            - Bonos en tokens quemados</p>
-        </div>
-
-        <!-- Beneficios -->
-        <div style="background: #000; color: #fff; padding: 20px; margin: 20px 0;">
-            <h3>🎁 Nuestros "Beneficios"</h3>
-            <ul>
-                <li>☕ Café rancio ilimitado</li>
-                <li>🪑 Sillas incómodas ergonómicas</li>
-                <li>💻 Computadoras con Windows XP</li>
-                <li>🏥 Seguro médico imaginario</li>
-            </ul>
-        </div>
-
-        <!-- Formulario -->
-        <div style="background: #f0f0f0; padding: 20px;">
-            <h3>📝 Formulario de Aplicación</h3>
-            <form>
-                <input type="text" placeholder="Nombre (No nos importa)" style="width: 100%; margin: 5px 0;"><br>
-                <input type="email" placeholder="Email (No lo revisaremos)" style="width: 100%; margin: 5px 0;"><br>
-                <textarea style="width: 100%; height: 100px;" placeholder="Descripción de tus peores fracasos"></textarea><br>
-                <label>
-                    <input type="checkbox"> Acepto trabajar por exposición
-                </label><br>
-                <button onclick="alert('Error 404: Departamento de RRHH no encontrado')">Enviar al Vacío</button>
-            </form>
-        </div>
-
-        <!-- Footer -->
-        <div style="text-align: center; margin-top: 30px;">
-            <p>⚠️ ¡No nos responsabilizamos por:<br>
-            - Pérdida de dignidad<br>
-            - Deterioro mental<br>
-            - Ganas de vivir! ⚠️</p>
-        </div>
+    <div class="box">
+      <h3>Mecanismo de recompensas:</h3>
+      <ul>
+        <li>¿Tu startup murió? → <strong>¡Airdrop!</strong></li>
+        <li>¿Te dejó tu pareja? → <strong>¡Bonus!</strong></li>
+        <li>¿Te rechazaron de nuevo? → <strong>¡Token boost!</strong></li>
+      </ul>
+      <p><strong>Retiros:</strong> Solo se desbloquean al verificar una pérdida real.</p>
+      <p><strong>Modo combo:</strong> Cuantos más fracasos seguidos acumulas, más alto el multiplicador de recompensa. 📉 = 💰</p>
     </div>
+  </div>
 
-    <script>
-        // Efecto de carga falsa
-        document.querySelectorAll('button').forEach(btn => {
-            btn.addEventListener('click', () => {
-                btn.innerHTML = 'Enviando...';
-                setTimeout(() => {
-                    btn.innerHTML = '¡Error! Intenta de nuevo';
-                }, 2000);
-            });
-        });
-    </script>
+  <div class="section">
+    <h2>🧙‍♂️ ¿Por qué existe?</h2>
+    <p>
+      Porque ya basta de premiar solo a los que siempre ganan.<br />
+      iLose es para quienes <strong>lo intentan</strong>... lo siguen intentando... y fallan.<br />
+      Pero ahora, <span class="highlight">fallar tiene valor</span>.
+    </p>
+  </div>
+
+  <div class="section" style="text-align: center;">
+    <h2>🧢 iLose</h2>
+    <p><em>"Por fin, ganar no es solo para ganadores."</em></p>
+  </div>
+
+  <footer>
+    &copy; 2025 iLose Network. Fracasar nunca fue tan rentable.
+  </footer>
 </body>
 </html>
