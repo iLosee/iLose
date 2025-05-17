@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>🧢 iLose Merch - Viste tu fracaso con orgullo</title>
+    <style>
+        /* Estilos base similares a la web principal */
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            background: linear-gradient(45deg, #ff69b4, #00ff00);
+            color: #1a1a1a;
+            text-align: center;
+        }
+        
+        .merch-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .producto {
+            background: rgba(255,255,255,0.9);
+            border-radius: 15px;
+            padding: 20px;
+            border: 3px dashed red;
+            transition: transform 0.3s;
+        }
+        
+        .producto:hover {
+            transform: rotate(-5deg);
+        }
+        
+        .producto-img {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            margin: 0 auto;
+            filter: sepia(1);
+        }
+        
+        .precio {
+            color: red;
+            font-size: 1.5em;
+            text-decoration: line-through;
+        }
+        
+        .descuento {
+            color: green;
+            font-weight: bold;
+        }
+        
+        .badge {
+            background: black;
+            color: white;
+            padding: 5px;
+            border-radius: 10px;
+            display: inline-block;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="font-size: 3em;">🛍 iLose Merch Store<br><small>Productos que algun dia se podran comprar, pero no hoy</small></h1>
+
+    <div class="merch-grid">
+        <!-- Camiseta del Perdedor Profesional -->
+        <div class="producto">
+            <img src="https://img.icons8.com/plasticine/200/t-shirt.png" class="producto-img">
+            <h3>"I Bought the Dip... And It Kept Dipping" T-Shirt</h3>
+            <div class="badge">👕 Edición Limitada (como tus ganancias)</div>
+            <p class="precio">$49.99 <span class="descuento">$19.99*</span></p>
+            <p><small>*Descuento aplica solo si puedes probar que perdiste dinero en crypto</small></p>
+        </div>
+
+        <!-- Taza de Café de los Perdedores -->
+        <div class="producto">
+            <img src="https://img.icons8.com/color/200/coffee-cup.png" class="producto-img">
+            <h3>Taza "Proof of Misfortune"</h3>
+            <p>Cambia de color al contacto con líquidos calientes<br>para revelar mensajes depresivos</p>
+            <div class="badge">☕ Incluye código QR con memes de tu pérdida</div>
+        </div>
+
+        <!-- Gorra de la Mala Suerte -->
+        <div class="producto">
+            <img src="https://img.icons8.com/color/200/baseball-cap.png" class="producto-img">
+            <h3>🧢 Gorra iLose Official</h3>
+            <p>"Cuanto más la usas, más se desgasta"<br>
+            <span class="badge">⚠️ Efecto secundario: Atrae FUD</span></p>
+        </div>
+
+        <!-- Calcetines del Paper Hands -->
+        <div class="producto">
+            <img src="https://img.icons8.com/color/200/socks.png" class="producto-img">
+            <h3>Calcetines "Diamond Hands? More Like Paper Hands"</h3>
+            <p>Huecos incluidos para mayor autenticidad<br>
+            <span class="badge">🧦 Se deshacen después de 3 lavados</span></p>
+        </div>
+
+        <!-- Stickers de Fracasos -->
+        <div class="producto">
+            <img src="https://img.icons8.com/color/200/sticker.png" class="producto-img">
+            <h3>Pack "Certified Loser" Stickers</h3>
+            <p>Incluye:<br>
+            - "I ❤️ Rug Pulls"<br>
+            - "Vendí en el piso"<br>
+            - "HODL? Nunca supe cómo"</p>
+        </div>
+
+        <!-- NFT Físico (Parodia) -->
+        <div class="producto">
+            <img src="https://img.icons8.com/color/200/picture.png" class="producto-img">
+            <h3>NFT Físico Coleccionable</h3>
+            <p>Impresión en papel higiénico de:<br>
+            "El momento exacto en que vendí antes del pump"<br>
+            <span class="badge">🚽 Útil en caso de emergencia</span></p>
+        </div>
+    </div>
+
+    <div style="margin: 50px; background: black; color: white; padding: 20px;">
+        <h2>🌟 Ofertas Especiales para Grandes Perdedores 🌟</h2>
+        <div style="display: flex; justify-content: center; gap: 30px;">
+            <div>
+                <h3>📦 "Loot Box of Disappointment"</h3>
+                <p>Contiene:<br>
+                - Moneda física sin valor<br>
+                - Manual de cómo perder amigos y no influir<br>
+                - Cupón de descuento caducado</p>
+            </div>
+            <div>
+                <h3>🏆 Trofeo "Peor Inversor 2024"</h3>
+                <p>Estatuilla dorada de un simio llorando<br>
+                <small>Base grabada: "Por servicios distinguidos en perdición financiera"</small></p>
+            </div>
+        </div>
+    </div>
+
+    <footer style="background: rgba(0,0,0,0.8); color: white; padding: 20px;">
+        <p>⚠️ Todos los productos son físicamente inútiles. El valor emocional disminuye un 50% al abrir el paquete.<br>
+        🚚 Envíos: 4-6 semanas laborables (como mínimo) | 📦 99% de probabilidad de daños en tránsito<br>
+        © 2024 iLose Merch - "Donde tu decepción se convierte en nuestro beneficio"</p>
+    </footer>
+</body>
+</html>
