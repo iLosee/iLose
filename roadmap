@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>🧢 iLose Roadmap - Plan Maestro para el Fracaso</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            background: linear-gradient(45deg, #ff69b4, #00ff00);
+            color: #1a1a1a;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .roadmap-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline {
+            border-left: 5px dashed #ff0000;
+            margin-left: 100px;
+            padding: 50px 0;
+        }
+
+        .phase {
+            background: rgba(255,255,255,0.9);
+            margin: 20px;
+            padding: 20px;
+            border-radius: 15px;
+            border: 3px solid #000;
+            position: relative;
+            transform: rotate(-1deg);
+            box-shadow: 5px 5px 0 #000;
+        }
+
+        .phase:nth-child(even) {
+            transform: rotate(1deg);
+        }
+
+        .phase::before {
+            content: '❌';
+            position: absolute;
+            left: -70px;
+            top: 20px;
+            font-size: 2em;
+            background: white;
+            border-radius: 50%;
+            padding: 5px;
+        }
+
+        .phase-date {
+            font-size: 1.5em;
+            color: #ff0000;
+            margin-bottom: 10px;
+        }
+
+        .badge {
+            background: #000;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            display: inline-block;
+            margin: 5px;
+            font-size: 0.8em;
+        }
+
+        .mascot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 150px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .disclaimer {
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 20px;
+            margin: 50px;
+            border-radius: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="roadmap-container">
+        <h1 style="text-align: center; font-size: 3em; text-shadow: 2px 2px #fff;">📉 iLose Roadmap<br>
+        <small>"Planificando nuestro fracaso desde 2024"</small></h1>
+
+        <div class="timeline">
+            <!-- 2025 -->
+            <div class="phase">
+                <div class="phase-date">Q2 2024 - Fundación Gloriosa</div>
+                <h3>🚀 Lanzamiento Épico</h3>
+                <div class="badge">Fracaso Verificado</div>
+                <div class="badge">Proof of Misfortune v0.1</div>
+                <ul>
+                    <li>Presale con máximo slippage</li>
+                    <li>Whitepaper escrito con errores ortográficos</li>
+                    <li>Primer hackeo simulado</li>
+                </ul>
+            </div>
+
+            <div class="phase">
+                <div class="phase-date">Q3 2024 - Acelerando la Pérdida</div>
+                <h3>💣 Servicios Básicos</h3>
+                <div class="badge">iLose Wallet 1.0</div>
+                <div class="badge">FailDEX Alpha</div>
+                <ul>
+                    <li>Integración con exchanges muertos</li>
+                    <li>Primera quema accidental de tokens</li>
+                    <li>Alianza con proyectos abandonados</li>
+                </ul>
+            </div>
+
+            <!-- 2025 -->
+            <div class="phase">
+                <div class="phase-date">Q1 2025 - Innovación Inútil</div>
+                <h3>🎮 ecosistema del Caos</h3>
+                <div class="badge">Rekt Insurance</div>
+                <div class="badge">FOMO Simulator</div>
+                <ul>
+                    <li>NFTs de errores famosos</li>
+                    <li>DAO gobernada por bots</li>
+                    <li>Primer rug pull oficial</li>
+                </ul>
+            </div>
+
+            <div class="phase">
+                <div class="phase-date">Q3 2025 - Expansión del Fracaso</div>
+                <h3>🌍 Global Disaster</h3>
+                <div class="badge">iLose Academy</div>
+                <div class="badge">Physical Burn Wallet</div>
+                <ul>
+                    <li>ATM que solo vende en pérdidas</li>
+                    <li>Colección merch "Perdedor VIP"</li>
+                    <li>Podcast diario de noticias falsas</li>
+                </ul>
+            </div>
+
+            <!-- 2026 -->
+            <div class="phase">
+                <div class="phase-date">2026 - Meta Final</div>
+                <h3>🔥 Auto-Destrucción</h3>
+                <div class="badge">Total Rekt</div>
+                <div class="badge">Mission Complete</div>
+                <ul>
+                    <li>Documental "Cómo lo arruinamos todo"</li>
+                    <li>Libro contable con números rojos</li>
+                    <li>Fiesta de quiebra en el metaverso</li>
+                </ul>
+            </div>
+        </div>
+
+        <img src="https://img.icons8.com/color/96/000000/sad.png" class="mascot" alt="Mascota triste">
+
+        <div class="disclaimer">
+            <p>⚠️ Este roadmap es 100% real hasta que decidamos abandonarlo.<br>
+            Todas las fechas son aproximadas (como nuestros precios).<br>
+            Probabilidad de cumplimiento: 0.3% 📉</p>
+        </div>
+    </div>
+</body>
+</html>
