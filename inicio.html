@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>🧢 iLose - La crypto de los perdedores profesionales</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            background: linear-gradient(45deg, #ff69b4, #00ff00);
+            color: #1a1a1a;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            text-shadow: 2px 2px #ff0000;
+            color: #fff;
+        }
+        
+        .mascot {
+            width: 150px;
+            filter: drop-shadow(5px 5px 5px #666);
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            margin: 20px;
+            border-radius: 20px;
+            border: 3px dashed #ff0000;
+        }
+        
+        .badge {
+            background: #ff0000;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            display: inline-block;
+            margin: 10px;
+        }
+        
+        button {
+            background: #00ff00 !important;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            margin: 20px;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: transform 0.3s;
+        }
+        
+        button:hover {
+            transform: rotate(360deg);
+        }
+        
+        .meme-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 20px;
+        }
+        
+        .meme-img {
+            width: 100%;
+            border-radius: 10px;
+            border: 3px solid yellow;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .rainbow-text {
+            background-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="rainbow-text">🧢 iLose Coin</h1>
+            <img src="https://img.icons8.com/color/96/000000/sad.png" class="mascot" alt="Mascota triste">
+            <h3>"Por fin ganar no es solo para ganadores"</h3>
+        </div>
+
+        <div class="section">
+            <h2>🚀 ¿Qué es iLose?</h2>
+            <p>La PRIMERA criptomoneda que te premia por:</p>
+            <div class="badge">⚡ Ser un desastre</div>
+            <div class="badge">💔 Fracasar en el amor</div>
+            <div class="badge">📉 Perder dinero</div>
+            <div class="badge">😭 Llorar en público</div>
+        </div>
+
+        <div class="section">
+            <h2>💣 Cómo Funciona</h2>
+            <div style="text-align: left;">
+                <p>✅ <strong>Proof of Misfortune:</strong> Valida transacciones mostrando tus peores momentos</p>
+                <p>🔥 <strong>Fracaso Comprobado = Tokens Minados</strong></p>
+                <p>💸 <strong>Modo Combo Fail:</strong> +10% por cada desgracia consecutiva</p>
+            </div>
+            <button onclick="alert('¡Error 404: Suerte no encontrada!')">RECLAMA TUS FRACASOS</button>
+        </div>
+
+        <div class="section">
+            <h2>🏆 Top Fracasos 2024</h2>
+            <div class="meme-gallery">
+                <img src="https://api.memegen.link/images/ds/No_puedo_creer_que_otra_vez_me_estafaron.png" class="meme-img">
+                <img src="https://api.memegen.link/images/disastergirl/Esto_es_una_inversion_segura_they_said.png" class="meme-img">
+                <img src="https://api.memegen.link/images/sadfrog/Perdi_mis_ahorros_y_mi_novia.png" class="meme-img">
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📉 Tu Pérdida = Nuestra Ganancia</h2>
+            <marquee behavior="scroll" direction="left" scrollamount="15">
+                🚨 ÚLTIMOS FRACASOS: Juan perdió 50k en NFTs de monos • María compró Bitcoin en ATH • Pedro invirtió en FTX
+            </marquee>
+        </div>
+
+        <footer style="margin: 40px; color: white;">
+            <p>⚠️ Advertencia: iLose tiene un 100% de probabilidad de hacerte perder dinero. ¡Perfecto para nosotros!</p>
+            <p>🚨 No financial advice - NFA (Ni Futuro ni Ahorros)</p>
+        </footer>
+    </div>
+
+    <script>
+        // Efecto de botón clickeable
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    btn.style.transform = 'scale(1)';
+                }, 200);
+                
+                // Sonido de error (agregar archivo o usar API)
+                new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3').play();
+            });
+        });
+        
+        // Cambiar memes cada 5 segundos
+        setInterval(() => {
+            const memes = document.querySelectorAll('.meme-img');
+            memes.forEach(img => {
+                img.src = `https://api.memegen.link/images/sadfrog/${Date.now()}.png?background=https://picsum.photos/200`;
+            });
+        }, 5000);
+    </script>
+</body>
+</html>
