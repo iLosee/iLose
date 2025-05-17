@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>🧢 iLose Ecosystem - Servicios para Perdedores Profesionales</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            background: linear-gradient(45deg, #ff69b4, #00ff00);
+            color: #1a1a1a;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .ecosystem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: rgba(255,255,255,0.9);
+            padding: 20px;
+            border-radius: 15px;
+            border: 3px dashed #ff0000;
+            transform: rotate(-1deg);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:nth-child(even) {
+            transform: rotate(1deg);
+        }
+
+        .service-card:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 5px 5px 0 #000;
+        }
+
+        .service-title {
+            color: #ff0000;
+            font-size: 1.5em;
+            margin: 0 0 10px 0;
+        }
+
+        .badge {
+            background: #000;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 10px;
+            display: inline-block;
+            margin: 5px 2px;
+            font-size: 0.8em;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: '💥';
+            position: absolute;
+            left: 0;
+        }
+
+        .mascot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 150px;
+            animation: shake 2s infinite;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+            100% { transform: translateX(0); }
+        }
+
+        .easter-egg {
+            position: absolute;
+            bottom: -10px;
+            right: -10px;
+            opacity: 0.1;
+            transition: opacity 0.3s;
+        }
+
+        .service-card:hover .easter-egg {
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; text-shadow: 2px 2px #fff;">🧢 iLose Ecosystem<br>
+    <small>Donde cada servicio es una nueva forma de fracasar</small></h1>
+
+    <div class="ecosystem-grid">
+        <!-- Servicio 1 -->
+        <div class="service-card">
+            <div class="easter-egg">🔥</div>
+            <h2 class="service-title">1. iLose Wallet</h2>
+            <p class="tagline">"La única wallet que pierde tus claves por ti"</p>
+            <ul class="feature-list">
+                <li><span class="badge">Autodestrucción</span> Tras 3 intentos fallidos</li>
+                <li><span class="badge">Modo Paper Hands</span> Venta en caídas de 0.1%</li>
+                <li>Notificaciones push saboteadoras</li>
+            </ul>
+        </div>
+
+        <!-- Servicio 2 -->
+        <div class="service-card">
+            <div class="easter-egg">📉</div>
+            <h2 class="service-title">2. FailDEX</h2>
+            <p class="tagline">"Órdenes que nunca se ejecutan bien"</p>
+            <ul class="feature-list">
+                <li>Gráficos invertidos</li>
+                <li><span class="badge">Slippage Predictor</span> Peores precios</li>
+                <li>Botón de pánico gigante</li>
+            </ul>
+        </div>
+
+        <!-- Servicio 3 -->
+        <div class="service-card">
+            <div class="easter-egg">💣</div>
+            <h2 class="service-title">3. Rekt Insurance</h2>
+            <p class="tagline">"Protección imaginaria"</p>
+            <ul class="feature-list">
+                <li>Pólizas NFT quemables</li>
+                <li>Cubre rug pulls y autosabotaje</li>
+                <li><span class="badge">Cláusula</span> Error de usuario total</li>
+            </ul>
+        </div>
+
+        <!-- Servicio 4 -->
+        <div class="service-card">
+            <div class="easter-egg">🏆</div>
+            <h2 class="service-title">4. Loss Leaderboard</h2>
+            <p class="tagline">"Competición de fracasos"</p>
+            <ul class="feature-list">
+                <li>Puntos por pérdidas</li>
+                <li>Premio: Estatuilla derretible</li>
+                <li>Ranking en tiempo real</li>
+            </ul>
+        </div>
+
+        <!-- Servicio 5 -->
+        <div class="service-card">
+            <div class="easter-egg">🎓</div>
+            <h2 class="service-title">5. iLose Academy</h2>
+            <p class="tagline">"Educación inútil"</p>
+            <ul class="feature-list">
+                <li>Cursos de autosabotaje</li>
+                <li>Diplomas con errores</li>
+                <li>Clases de FUD avanzado</li>
+            </ul>
+        </div>
+
+        <!-- Servicio 6 -->
+        <div class="service-card">
+            <div class="easter-egg">🤖</div>
+            <h2 class="service-title">6. Therapy Chatbot</h2>
+            <p class="tagline">"Coach del desastre"</p>
+            <ul class="feature-list">
+                <li>Frases motivacionales tóxicas</li>
+                <li>Recomienda shitcoins</li>
+                <li>Análisis de malas decisiones</li>
+            </ul>
+        </div>
+
+        <!-- Servicios 7-12 (similar structure) -->
+        <!-- Se incluirían las tarjetas restantes con la misma estructura -->
+    </div>
+
+    <img src="https://img.icons8.com/color/96/000000/sad.png" class="mascot" alt="Mascota triste">
+
+    <footer style="background: rgba(0,0,0,0.8); color: white; padding: 20px; margin-top: 50px; text-align: center;">
+        <p>⚠️ Todos los servicios están diseñados para fallar espectacularmente.<br>
+        El 100% de los usuarios reportan pérdidas. ¡Únete ahora! 📉</p>
+    </footer>
+
+    <script>
+        // Efecto de hover aleatorio
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseover', () => {
+                card.style.transform = `rotate(${Math.random() * 4 - 2}deg) scale(1.05)`;
+            });
+            
+            card.addEventListener('click', () => {
+                const frasesFracaso = [
+                    "¡Error 404: Éxito no encontrado!",
+                    "Fallo crítico: Característica no implementada",
+                    "Este servicio ya está obsoleto (como tus ganancias)"
+                ];
+                alert(frasesFracaso[Math.floor(Math.random() * frasesFracaso.length)]);
+            });
+        });
+    </script>
+</body>
+</html>
