@@ -1,76 +1,215 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🧢 iLose - Por fin ganan los que nunca ganan nada</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #1a1a1a;
-      color: #fff;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #ff3c3c;
-      padding: 20px;
-      text-align: center;
-    }
-    h1 {
-      margin: 0;
-      font-size: 2em;
-    }
-    section {
-      padding: 20px;
-      max-width: 800px;
-      margin: auto;
-    }
-    .highlight {
-      color: #ffd700;
-      font-weight: bold;
-    }
-    footer {
-      background-color: #333;
-      text-align: center;
-      padding: 10px;
-      font-size: 0.9em;
-      color: #ccc;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>🧢 iLose - La crypto de los perdedores profesionales</title>
+    <style>
+        /* Estilos existentes se mantienen */
+        /* Añadimos nuevos estilos para la navegación */
+        
+        .nav-container {
+            background: rgba(0,0,0,0.8);
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 50px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .nav-button {
+            background: linear-gradient(45deg, #ff0000, #ff69b4);
+            color: white !important;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: all 0.3s;
+            border: 2px solid yellow;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .nav-button:hover {
+            transform: rotate(5deg) scale(1.1);
+            background: linear-gradient(45deg, #00ff00, #ff69b4);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Resto de estilos originales se mantienen */
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            background: linear-gradient(45deg, #ff69b4, #00ff00);
+            color: #1a1a1a;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            text-shadow: 2px 2px #ff0000;
+            color: #fff;
+        }
+        
+        .mascot {
+            width: 150px;
+            filter: drop-shadow(5px 5px 5px #666);
+        }
+        
+        .section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            margin: 20px;
+            border-radius: 20px;
+            border: 3px dashed #ff0000;
+        }
+        
+        .badge {
+            background: #ff0000;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            display: inline-block;
+            margin: 10px;
+        }
+        
+        button {
+            background: #00ff00 !important;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            margin: 20px;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: transform 0.3s;
+        }
+        
+        button:hover {
+            transform: rotate(360deg);
+        }
+        
+        .meme-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 20px;
+        }
+        
+        .meme-img {
+            width: 100%;
+            border-radius: 10px;
+            border: 3px solid yellow;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .rainbow-text {
+            background-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>🧢 iLose</h1>
-    <p>Por fin ganan los que nunca ganan nada</p>
-  </header>
+    <div class="nav-container">
+        <nav class="nav-buttons">
+            <a href="#carrera" class="nav-button">🚀 Carrera</a>
+            <a href="#equipo" class="nav-button">👥 Equipo</a>
+            <a href="#merch" class="nav-button">🛍 Merchandising</a>
+            <a href="#roadmap" class="nav-button">🗺️ Roadmap</a>
+            <a href="#productos" class="nav-button">📦 Otros Productos</a>
+            <a href="#random" class="nav-button" style="background: linear-gradient(45deg, #000, #fff);">🤪 djfksf</a>
+        </nav>
+    </div>
 
-  <section>
-    <h2>🎯 ¿Qué es iLose?</h2>
-    <p><strong>iLose</strong> es la primera red que <span class="highlight">recompensa la mala suerte</span>. Una cripto para los que siempre pierden. Aquí, cuanto más fracasas, más vales.</p>
+    <div class="container">
+        <div class="header">
+            <h1 class="rainbow-text">🧢 iLose Coin</h1>
+            <img src="https://img.icons8.com/color/96/000000/sad.png" class="mascot" alt="Mascota triste">
+            <h3>"Por fin ganar no es solo para ganadores"</h3>
+        </div>
 
-    <h2>🔧 ¿Cómo funciona?</h2>
-    <ul>
-      <li><strong>Algoritmo:</strong> Proof of Misfortune (PoM)</li>
-      <li><strong>Recompensas:</strong> 
-        <ul>
-          <li>¿Tu startup murió? 👉 ¡Airdrop!</li>
-          <li>¿Te dejó tu pareja? 👉 ¡Bonus!</li>
-          <li>¿Te rechazaron de nuevo? 👉 ¡Token boost!</li>
-        </ul>
-      </li>
-      <li>📉 = 💰</li>
-    </ul>
+        <!-- Secciones existentes se mantienen igual -->
+        <div class="section">
+            <h2>🚀 ¿Qué es iLose?</h2>
+            <p>La PRIMERA criptomoneda que te premia por:</p>
+            <div class="badge">⚡ Ser un desastre</div>
+            <div class="badge">💔 Fracasar en el amor</div>
+            <div class="badge">📉 Perder dinero</div>
+            <div class="badge">😭 Llorar en público</div>
+        </div>
 
-    <h2>🤡 Slogan oficial</h2>
-    <p><em>"Fallaste otra vez... ¡Felicidades!"</em></p>
+        <div class="section">
+            <h2>💣 Cómo Funciona</h2>
+            <div style="text-align: left;">
+                <p>✅ <strong>Proof of Misfortune:</strong> Valida transacciones mostrando tus peores momentos</p>
+                <p>🔥 <strong>Fracaso Comprobado = Tokens Minados</strong></p>
+                <p>💸 <strong>Modo Combo Fail:</strong> +10% por cada desgracia consecutiva</p>
+            </div>
+            <button onclick="alert('¡Error 404: Suerte no encontrada!')">RECLAMA TUS FRACASOS</button>
+        </div>
 
-    <h2>🧙‍♂️ ¿Por qué existe?</h2>
-    <p>Porque ya basta de premiar solo a los ganadores. <strong>iLose</strong> es para los que lo intentan... y fallan. Pero ahora, fallar tiene valor.</p>
-  </section>
+        <div class="section">
+            <h2>🏆 Top Fracasos 2024</h2>
+            <div class="meme-gallery">
+                <img src="https://api.memegen.link/images/ds/No_puedo_creer_que_otra_vez_me_estafaron.png" class="meme-img">
+                <img src="https://api.memegen.link/images/disastergirl/Esto_es_una_inversion_segura_they_said.png" class="meme-img">
+                <img src="https://api.memegen.link/images/sadfrog/Perdi_mis_ahorros_y_mi_novia.png" class="meme-img">
+            </div>
+        </div>
 
-  <footer>
-    🧢 iLose — "Por fin, ganar no es solo para ganadores." | © 2025
-  </footer>
+        <div class="section">
+            <h2>📉 Tu Pérdida = Nuestra Ganancia</h2>
+            <marquee behavior="scroll" direction="left" scrollamount="15">
+                🚨 ÚLTIMOS FRACASOS: Juan perdió 50k en NFTs de monos • María compró Bitcoin en ATH • Pedro invirtió en FTX
+            </marquee>
+        </div>
+
+        <footer style="margin: 40px; color: white;">
+            <p>⚠️ Advertencia: iLose tiene un 100% de probabilidad de hacerte perder dinero. ¡Perfecto para nosotros!</p>
+            <p>🚨 No financial advice - NFA (Ni Futuro ni Ahorros)</p>
+        </footer>
+    </div>
+
+    <script>
+        // Script original se mantiene
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    btn.style.transform = 'scale(1)';
+                }, 200);
+                new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3').play();
+            });
+        });
+        
+        setInterval(() => {
+            const memes = document.querySelectorAll('.meme-img');
+            memes.forEach(img => {
+                img.src = `https://api.memegen.link/images/sadfrog/${Date.now()}.png?background=https://picsum.photos/200`;
+            });
+        }, 5000);
+
+        // Nuevo efecto para botón random
+        document.querySelector('[href="#random"]').addEventListener('mouseover', function() {
+            this.style.transform = `rotate(${Math.random()*20-10}deg) scale(1.2)`;
+        });
+    </script>
 </body>
 </html>
