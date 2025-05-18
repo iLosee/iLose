@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trump Esquivador</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #1a237e, #0d47a1);
+            cursor: none;
+        }
+        
+        #trump {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            transition: 0.1s;
+            background-image: url('https://ih1.redbubble.net/image.370948819.7944/raf,360x360,075,t,fafafa:ca443f4786.u5.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .bullet {
+            position: absolute;
+            font-size: 25px;
+            color: red;
+            text-shadow: 0 0 10px rgba(255,0,0,0.5);
+            right: -50px;
+        }
+
+        #score {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            color: white;
+            font-family: Arial;
+            font-size: 24px;
+            text-shadow: 2px 2px 4px black;
+            z-index: 100;
+        }
+
+        #gameOver {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 48px;
+            text-align: center;
+            text-shadow: 4px 4px 8px black;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <div id="score">Tiempo: 0</div>
+    <div id="trump"></div>
+    <div id="gameOver">¡GAME OVER!<br><span style="font-size: 24px">Puntuación: </span></div>
+
+    <script>
+        const trump = document.getElementById('trump');
+        const scoreElement = document.getElementById('score');
+        const gameOverScreen = document.getElementById('gameOver');
+        
+        let posX = window.innerWidth / 2;
+        let posY = window.innerHeight / 2;
+        let score = 0;
+        let gameActive = true;
+
+        // Posición inicial centrada
+        trump.style.left = posX + 'px';
+        trump.style.top = posY + 'px';
+
+        // Movimiento con teclado
+        document.addEventListener('keydown', (e) => {
+            if(!gameActive) return;
+
+            const speed = 30;
+            switch(e.key) {
+                case 'ArrowUp': posY -= speed; break;
+                case 'ArrowDown': posY += speed; break;
+                case 'ArrowLeft': posX -= speed; break;
+                case 'ArrowRight': posX += speed; break;
+            }
+
+            // Limitar bordes con margen para la imagen
+            posX = Math.max(40, Math.min(posX, window.innerWidth - 40));
+            posY = Math.max(40, Math.min(posY, window.innerHeight - 40));
+
+            trump.style.left = posX + 'px';
+            trump.style.top = posY + 'px';
+        });
+
+        // Generar balas
+        function createBullet() {
+            if(!gameActive) return;
+
+            const bullet = document.createElement('div');
+            bullet.className = 'bullet';
+            bullet.textContent = '🔴';
+            
+            const startY = Math.random() * (window.innerHeight - 50);
+            bullet.style.top = startY + 'px';
+            document.body.appendChild(bullet);
+
+            let bulletX = window.innerWidth;
+            const moveInterval = setInterval(() => {
+                if(!gameActive) {
+                    clearInterval(moveInterval);
+                    bullet.remove();
+                    return;
+                }
+
+                bulletX -= 15;
+                bullet.style.right = (window.innerWidth - bulletX) + 'px';
+
+                // Detección de colisión precisa
+                const trumpRect = trump.getBoundingClientRect();
+                const bulletRect = bullet.getBoundingClientRect();
+
+                if(!(trumpRect.right < bulletRect.left || 
+                     trumpRect.left > bulletRect.right || 
+                     trumpRect.bottom < bulletRect.top || 
+                     trumpRect.top > bulletRect.bottom)) {
+                    gameActive = false;
+                    trump.style.backgroundImage = 'none';
+                    trump.textContent = '💥';
+                    gameOverScreen.style.display = 'block';
+                    gameOverScreen.innerHTML += score;
+                    document.body.style.backgroundColor = 'rgba(255,0,0,0.3)';
+                }
+
+                if(bulletX < -100) {
+                    bullet.remove();
+                    clearInterval(moveInterval);
+                }
+            }, 20);
+        }
+
+        // Sistema de puntuación
+        setInterval(() => {
+            if(gameActive) {
+                score++;
+                scoreElement.textContent = `Tiempo: ${score}`;
+            }
+        }, 1000);
+
+        // Generar balas cada 800ms
+        setInterval(createBullet, 800);
+
+        // Reiniciar al hacer clic
+        document.addEventListener('click', () => {
+            if(!gameActive) location.reload();
+        });
+
+        // Redimensionamiento responsive
+        window.addEventListener('resize', () => {
+            posX = Math.max(40, Math.min(posX, window.innerWidth - 40));
+            posY = Math.max(40, Math.min(posY, window.innerHeight - 40));
+            trump.style.left = posX + 'px';
+            trump.style.top = posY + 'px';
+        });
+    </script>
+</body>
+</html>
