@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>🎮 iLose Games - Donde perder es ganar</title>
+    <style>
+        /* Estilos base de iLose */
+        body {
+            font-family: 'Comic Sans MS', cursive;
+            background: linear-gradient(45deg, #ff69b4, #00ff00);
+            color: #1a1a1a;
+            text-align: center;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 20px;
+        }
+        
+        .game-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 3px dashed #ff0000;
+            border-radius: 30px;
+            padding: 20px;
+            transition: all 0.3s;
+            min-height: 350px;
+        }
+        
+        .game-card:hover {
+            transform: rotate(3deg) scale(1.05);
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
+        }
+        
+        .game-title {
+            color: #ff0066;
+            text-shadow: 2px 2px #00ff00;
+            font-size: 1.8em;
+            margin: 15px 0;
+        }
+        
+        .game-button {
+            background: linear-gradient(45deg, #ff0000, #ff69b4);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            border: 2px solid yellow;
+            cursor: pointer;
+            font-size: 1.1em;
+            margin: 15px 0;
+            transition: transform 0.3s;
+        }
+        
+        .game-button:hover {
+            transform: rotate(5deg) scale(1.1);
+        }
+        
+        .badge {
+            background: #ff0000;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 15px;
+            display: inline-block;
+            margin: 5px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="font-size: 2.5em; text-shadow: 2px 2px #ff0000; color: #fff;">
+            🕹️ iLose Arcade
+        </h1>
+        <h3>"Donde cada derrota es una victoria épica"</h3>
+        
+        <div class="game-grid">
+            <!-- Scam Game -->
+            <div class="game-card">
+                <h2 class="game-title">🕵️ Scam Game</h2>
+                <p>Encuentra la estafa entre:</p>
+                <div class="badge">💣 NFTs falsos</div>
+                <div class="badge">📈 Gráficos manipulados</div>
+                <div class="badge">🤖 Bots promocionales</div>
+               <button class="game-button" onclick="window.location.href='scamgame.html'">🚨 Jugar (99% de perder)</button>
+
+                    🚨 Jugar (99% de perder)
+                </button>
+            </div>
+
+            <!-- Tesla Laser -->
+            <div class="game-card">
+                <h2 class="game-title">🔫 Tesla Laser</h2>
+                <p>Defiende la fábrica de:</p>
+                <div class="badge">👾 Crypto Bros</div>
+                <div class="badge">🤡 FUDers</div>
+                <div class="badge">💸 Short Sellers</div>
+                <button class="game-button" onclick="window.location.href='teslalaser.html'">Jugar (99% de perder)</button>
+                    ⚡ ¡Cargar Arma!
+                </button>
+            </div>
+
+            <!-- Salva a Elon -->
+            <div class="game-card">
+                <h2 class="game-title">🚀 Salva a Elon</h2>
+                <p>Escapa de:</p>
+                <div class="badge">🐦 Twitter Jail</div>
+                <div class="badge">📉 Accionistas</div>
+                <div class="badge">👽 Alienígenas SEC</div>
+                <button class="game-button" onclick="window.location.href='salvaelon.html'">🚨 Jugar (99% de perder)</button>
+                    🌌 Misión de Rescate
+                </button>
+            </div>
+
+            <!-- Lost Simulator -->
+            <div class="game-card">
+                <h2 class="game-title">😭 Lost Simulator</h2>
+                <p>Simula pérdidas de:</p>
+                <div class="badge">💼 Trabajo</div>
+                <div class="badge">💔 Amor</div>
+                <div class="badge">📉 Inversiones</div>
+                <button class="game-button" onclick="window.location.href='lostsimulator.html'">🚨 Jugar (99% de perder)</button>
+                    🎮 Empezar a Perder
+                </button>
+            </div>
+
+            <!-- Trump Esquivador -->
+            <div class="game-card">
+                <h2 class="game-title">🍊 Trump Esquivador</h2>
+                <p>Evita:</p>
+                <div class="badge">🗽 Promesas vacías</div>
+                <div class="badge">📰 Fake News</div>
+                <div class="badge">🤥 Tweets</div>
+                <button class="game-button" onclick="window.location.href='trumpesquivador.html'">🚨 Jugar (99% de perder)</button>
+                    🏃 ¡Corre!
+                </button>
+            </div>
+        </div>
+
+        <footer style="margin: 40px; color: white;">
+            <p>⚠️ Advertencia: Perder aquí te da tokens iLose (en teoría)</p>
+            <p>🎮 Las derrotas son permanentes... ¡como tus inversiones!</p>
+        </footer>
+    </div>
+
+    <script>
+        function jugar(juego) {
+            const mensajes = {
+                scam: "¡Scam detectado! +10 iLose 🎉",
+                tesla: "⚡ ¡Laser defectuoso! Quemaste 50 iLose",
+                elon: "🚀 Cohete explotó... NFT de escombros desbloqueado",
+                lost: `¡Perdiste ${['tu trabajo', 'a tu novia', 'dinero'][Math.floor(Math.random()*3)]}! +100 iLose`,
+                trump: "🚨 ¡Golpeado por un tweet! +50 iLose"
+            };
+            
+            alert(mensajes[juego]);
+            new Audio('https://assets.mixkit.co/active_storage/sfx/1062/1062-preview.mp3').play();
+        }
+    </script>
+</body>
+</html>
