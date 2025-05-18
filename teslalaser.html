@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Operación Rescue Elon</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #000;
+            font-family: 'Arial', sans-serif;
+        }
+        #gameContainer {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+        #hud {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            color: #0f0;
+            font-size: 20px;
+            z-index: 100;
+        }
+        #elonStatus {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            color: #ff0;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div id="hud">
+        <div>Salud: <span id="health">100</span>%</div>
+        <div>Batería Tesla: <span id="battery">100</span>%</div>
+        <div>Aliens eliminados: <span id="score">0</span></div>
+    </div>
+    <div id="elonStatus">🚀 Elon: [?????]</div>
+    <div id="gameContainer"></div>
+
+    <script>
+        const container = document.getElementById('gameContainer');
+        const aliens = [];
+        const bullets = [];
+        let playerX = window.innerWidth/2;
+        let playerY = window.innerHeight - 100;
+        let health = 100;
+        let battery = 100;
+        let score = 0;
+        let elonRescued = false;
+        const ALIEN_SPEED = 2.5;
+        const BULLET_SPEED = 8;
+
+        // Configuración del jugador y Elon
+        const player = document.createElement('div');
+        player.style.position = 'absolute';
+        player.style.fontSize = '40px';
+        player.textContent = '🚗';
+        container.appendChild(player);
+
+        const elon = document.createElement('div');
+        elon.style.position = 'absolute';
+        elon.style.fontSize = '50px';
+        elon.textContent = '👽';
+        elon.style.display = 'none';
+        container.appendChild(elon);
+
+        // Sistema de control
+        document.addEventListener('keydown', (e) => {
+            if(e.key === 'ArrowLeft') playerX = Math.max(50, playerX - 20);
+            if(e.key === 'ArrowRight') playerX = Math.min(window.innerWidth - 50, playerX + 20);
+            if(e.key === ' ') shoot();
+        });
+
+        function spawnAlien() {
+            const alien = document.createElement('div');
+            alien.style.position = 'absolute';
+            alien.style.fontSize = '30px';
+            alien.textContent = Math.random() > 0.5 ? '👾' : '🤖';
+            
+            const x = Math.random() * (window.innerWidth - 100);
+            alien.style.left = x + 'px';
+            alien.style.top = '-50px';
+            container.appendChild(alien);
+            
+            aliens.push({
+                element: alien,
+                x: x,
+                y: -50,
+                targetX: elonRescued ? playerX : (Math.random() > 0.8 ? window.innerWidth/2 : playerX),
+                type: Math.random() > 0.5 ? 'mars' : 'robot'
+            });
+        }
+
+        function shoot() {
+            if(battery > 0) {
+                battery = Math.max(0, battery - 2);
+                document.getElementById('battery').textContent = battery;
+                
+                const bullet = document.createElement('div');
+                bullet.style.position = 'absolute';
+                bullet.style.fontSize = '25px';
+                bullet.textContent = '⚡';
+                bullet.style.left = playerX + 'px';
+                bullet.style.top = (playerY - 30) + 'px';
+                container.appendChild(bullet);
+                
+                bullets.push({
+                    element: bullet,
+                    x: playerX,
+                    y: playerY - 30
+                });
+            }
+        }
+
+        function updateGame() {
+            // Actualizar posición de aliens
+            aliens.forEach((alien, index) => {
+                const dx = alien.targetX - alien.x;
+                alien.x += dx * 0.02 * ALIEN_SPEED;
+                alien.y += ALIEN_SPEED;
+                alien.element.style.left = alien.x + 'px';
+                alien.element.style.top = alien.y + 'px';
+
+                // Detectar colisión con jugador
+                if(Math.abs(alien.x - playerX) < 40 && Math.abs(alien.y - playerY) < 40) {
+                    health -= 5;
+                    document.getElementById('health').textContent = health;
+                    alien.element.remove();
+                    aliens.splice(index, 1);
+                }
+
+                // Eliminar aliens que salen de pantalla
+                if(alien.y > window.innerHeight + 100) {
+                    alien.element.remove();
+                    aliens.splice(index, 1);
+                }
+            });
+
+            // Actualizar balas
+            bullets.forEach((bullet, index) => {
+                bullet.y -= BULLET_SPEED;
+                bullet.element.style.top = bullet.y + 'px';
+
+                // Detectar colisiones bala-alien
+                aliens.forEach((alien, alienIndex) => {
+                    if(Math.abs(bullet.x - alien.x) < 30 && Math.abs(bullet.y - alien.y) < 30) {
+                        alien.element.remove();
+                        aliens.splice(alienIndex, 1);
+                        bullet.element.remove();
+                        bullets.splice(index, 1);
+                        score++;
+                        document.getElementById('score').textContent = score;
+                        if(score === 10) spawnElon();
+                    }
+                });
+
+                // Eliminar balas fuera de pantalla
+                if(bullet.y < -50) {
+                    bullet.element.remove();
+                    bullets.splice(index, 1);
+                }
+            });
+
+            // Actualizar posición jugador
+            player.style.left = playerX + 'px';
+            player.style.top = playerY + 'px';
+
+            // Recargar batería
+            battery = Math.min(100, battery + 0.1);
+            document.getElementById('battery').textContent = Math.floor(battery);
+
+            // Verificar estado del juego
+            if(health <= 0) {
+                alert('¡Misión fallida! Los aliens han capturado a Elon para siempre');
+                location.reload();
+            }
+
+            if(elonRescued && Math.abs(playerX - parseFloat(elon.style.left)) < 50 
+               && Math.abs(playerY - parseFloat(elon.style.top)) < 50) {
+                alert('¡ÉXITO! 🚀 Elon ha sido rescatado y ahora colonizará Marte');
+                location.reload();
+            }
+
+            requestAnimationFrame(updateGame);
+        }
+
+        function spawnElon() {
+            elon.style.display = 'block';
+            elon.style.left = window.innerWidth/2 + 'px';
+            elon.style.top = '100px';
+            document.getElementById('elonStatus').textContent = '🚀 Elon: [SOS desde Marte!]';
+            
+            // Hacer que los aliens ataquen a Elon
+            setInterval(() => {
+                if(!elonRescued) {
+                    aliens.push({
+                        element: document.createElement('div'),
+                        x: Math.random() * window.innerWidth,
+                        y: -50,
+                        targetX: window.innerWidth/2,
+                        type: 'elonHunter'
+                    });
+                }
+            }, 3000);
+        }
+
+        // Iniciar juego
+        setInterval(spawnAlien, 1500);
+        updateGame();
+    </script>
+</body>
+</html>
