@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rescata a Elon Musk</title>
+    <style>
+        body {
+            background-color: #000;
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial;
+        }
+        
+        #hero {
+            position: absolute;
+            font-size: 40px;
+            transition: 0.1s;
+            z-index: 2;
+        }
+
+        #musk {
+            position: absolute;
+            font-size: 40px;
+            z-index: 1;
+        }
+
+        .obstacle {
+            position: absolute;
+            font-size: 35px;
+            z-index: 3;
+        }
+
+        #counter {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            color: #fff;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div id="counter">Rescates: 0</div>
+    <div id="hero">🚀</div>
+    <div id="musk">👨🚀</div>
+
+    <script>
+        const hero = document.getElementById('hero');
+        const musk = document.getElementById('musk');
+        const counterElement = document.getElementById('counter');
+        let counter = 0;
+        let gameActive = true;
+
+        // Posición inicial
+        let heroX = 400;
+        let heroY = 300;
+        hero.style.left = heroX + 'px';
+        hero.style.top = heroY + 'px';
+
+        function placeMusk() {
+            musk.style.left = Math.random() * (window.innerWidth - 50) + 'px';
+            musk.style.top = Math.random() * (window.innerHeight - 50) + 'px';
+        }
+        placeMusk();
+
+        // Movimiento del héroe con límites mejorados
+        document.addEventListener('keydown', (e) => {
+            if(!gameActive) return;
+            
+            const speed = 25;
+            switch(e.key) {
+                case 'ArrowUp': heroY -= speed; break;
+                case 'ArrowDown': heroY += speed; break;
+                case 'ArrowLeft': heroX -= speed; break;
+                case 'ArrowRight': heroX += speed; break;
+            }
+
+            heroX = Math.max(0, Math.min(heroX, window.innerWidth - 50));
+            heroY = Math.max(0, Math.min(heroY, window.innerHeight - 50));
+
+            hero.style.left = heroX + 'px';
+            hero.style.top = heroY + 'px';
+
+            checkCollisionWithMusk();
+        });
+
+        function checkCollisionWithMusk() {
+            const heroRect = hero.getBoundingClientRect();
+            const muskRect = musk.getBoundingClientRect();
+
+            if(!(heroRect.right < muskRect.left || 
+                 heroRect.left > muskRect.right || 
+                 heroRect.bottom < muskRect.top || 
+                 heroRect.top > muskRect.bottom)) {
+                counter++;
+                counterElement.textContent = `Rescates: ${counter}`;
+                placeMusk();
+            }
+        }
+
+        // Sistema de colisiones mejorado para obstáculos
+        function checkObstacleCollision(obstacle) {
+            if(!gameActive) return;
+            
+            const heroRect = hero.getBoundingClientRect();
+            const obstacleRect = obstacle.getBoundingClientRect();
+
+            return !(heroRect.right < obstacleRect.left || 
+                    heroRect.left > obstacleRect.right || 
+                    heroRect.bottom < obstacleRect.top || 
+                    heroRect.top > obstacleRect.bottom);
+        }
+
+        function createObstacle() {
+            if(!gameActive) return;
+            
+            const obstacle = document.createElement('div');
+            obstacle.className = 'obstacle';
+            obstacle.textContent = '💥';
+            obstacle.style.left = window.innerWidth + 'px';
+            obstacle.style.top = Math.random() * (window.innerHeight - 50) + 'px';
+            document.body.appendChild(obstacle);
+
+            let obstacleX = window.innerWidth;
+            const obstacleSpeed = 12;
+            const animation = setInterval(() => {
+                if(!gameActive) {
+                    clearInterval(animation);
+                    return;
+                }
+                
+                obstacleX -= obstacleSpeed;
+                obstacle.style.left = obstacleX + 'px';
+
+                if(checkObstacleCollision(obstacle)) {
+                    gameActive = false;
+                    obstacle.remove();
+                    document.body.innerHTML = `
+                        <div style="color: white; font-size: 48px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+                            ¡EXPLOSIÓN!<br>
+                            Rescataste a Elon Musk ${counter} veces<br>
+                            Recarga para jugar de nuevo
+                        </div>
+                    `;
+                }
+
+                if(obstacleX < -100) {
+                    obstacle.remove();
+                    clearInterval(animation);
+                }
+            }, 20);
+        }
+
+        setInterval(createObstacle, 1500);
+
+        window.addEventListener('resize', () => {
+            heroX = Math.max(0, Math.min(heroX, window.innerWidth - 50));
+            heroY = Math.max(0, Math.min(heroY, window.innerHeight - 50));
+            hero.style.left = heroX + 'px';
+            hero.style.top = heroY + 'px';
+        });
+    </script>
+</body>
+</html>
