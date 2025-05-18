@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crypto Defender - vs Rugpulls</title>
+    <style>
+        body {
+            margin: 0;
+            background: #0a0a2a;
+            overflow: hidden;
+            color: #00ff9d;
+            font-family: 'Courier New', monospace;
+        }
+        #gameCanvas {
+            border: 3px solid #00ff9d;
+        }
+        #hud {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 10px;
+            background: rgba(0,0,0,0.7);
+        }
+        .enemy {
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <div id="hud">
+        <div>Salud: <span id="health">100</span>%</div>
+        <div>ETH: $<span id="score">0</span></div>
+        <div>Municiones: <span id="ammo">∞</span></div>
+    </div>
+    <canvas id="gameCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth - 20;
+        canvas.height = window.innerHeight - 20;
+
+        // Configuración del juego
+        const player = {
+            x: canvas.width/2,
+            y: canvas.height - 100,
+            width: 40,
+            height: 60,
+            speed: 8,
+            health: 100
+        };
+
+        let bullets = [];
+        let enemies = [];
+        let score = 0;
+        let gameOver = false;
+
+        // Tipos de enemigos (rugpull, scam, honeypot, etc)
+        const enemyTypes = [
+            {
+                name: "Rugpull",
+                color: "#ff5555",
+                speed: 3,
+                health: 2,
+                pattern: "direct",
+                score: 500
+            },
+            {
+                name: "Scam",
+                color: "#ffaa00",
+                speed: 2.5,
+                health: 3,
+                pattern: "sinusoidal",
+                score: 750
+            },
+            {
+                name: "Honeypot",
+                color: "#55ff55",
+                speed: 2,
+                health: 5,
+                pattern: "spiral",
+                score: 1000
+            }
+        ];
+
+        // Controles
+        const keys = {
+            ArrowLeft: false,
+            ArrowRight: false,
+            ArrowUp: false,
+            ArrowDown: false,
+            Space: false
+        };
+
+        document.addEventListener('keydown', (e) => {
+            if (e.code in keys) {
+                keys[e.code] = true;
+                e.preventDefault();
+            }
+        });
+
+        document.addEventListener('keyup', (e) => {
+            if (e.code in keys) {
+                keys[e.code] = false;
+                e.preventDefault();
+            }
+        });
+
+        function spawnEnemy() {
+            const type = enemyTypes[Math.floor(Math.random() * enemyTypes.length)];
+            enemies.push({
+                ...type,
+                x: Math.random() * (canvas.width - 50),
+                y: -50,
+                angle: 0,
+                health: type.health
+            });
+        }
+
+        function drawPlayer() {
+            ctx.fillStyle = "#00ffff";
+            ctx.beginPath();
+            ctx.moveTo(player.x, player.y);
+            ctx.lineTo(player.x - player.width/2, player.y + player.height);
+            ctx.lineTo(player.x + player.width/2, player.y + player.height);
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        function update() {
+            if (gameOver) return;
+
+            // Movimiento del jugador
+            if (keys.ArrowLeft) player.x -= player.speed;
+            if (keys.ArrowRight) player.x += player.speed;
+            if (keys.ArrowUp) player.y -= player.speed;
+            if (keys.ArrowDown) player.y += player.speed;
+
+            // Disparar
+            if (keys.Space && Date.now() % 5 === 0) {
+                bullets.push({
+                    x: player.x,
+                    y: player.y,
+                    speed: -10
+                });
+            }
+
+            // Actualizar enemigos
+            enemies.forEach(enemy => {
+                switch(enemy.pattern) {
+                    case 'sinusoidal':
+                        enemy.x += Math.sin(enemy.angle) * 2;
+                        enemy.y += enemy.speed;
+                        enemy.angle += 0.1;
+                        break;
+                    case 'spiral':
+                        enemy.x += Math.cos(enemy.angle) * 3;
+                        enemy.y += Math.sin(enemy.angle) * 3;
+                        enemy.angle += 0.05;
+                        break;
+                    default:
+                        enemy.y += enemy.speed;
+                }
+
+                // Colisión con jugador
+                if (Math.abs(enemy.x - player.x) < 30 && 
+                    Math.abs(enemy.y - player.y) < 30) {
+                    player.health -= 10;
+                    enemy.health = 0;
+                    document.getElementById('health').textContent = player.health;
+                }
+            });
+
+            // Actualizar balas
+            bullets.forEach(bullet => {
+                bullet.y += bullet.speed;
+                
+                enemies.forEach((enemy, index) => {
+                    if (Math.abs(bullet.x - enemy.x) < 20 && 
+                        Math.abs(bullet.y - enemy.y) < 20) {
+                        enemy.health--;
+                        if (enemy.health <= 0) {
+                            score += enemy.score;
+                            document.getElementById('score').textContent = score;
+                            enemies.splice(index, 1);
+                        }
+                        bullet.y = -100; // Eliminar bala
+                    }
+                });
+            });
+
+            // Limpiar elementos fuera de pantalla
+            enemies = enemies.filter(enemy => enemy.y < canvas.height + 100);
+            bullets = bullets.filter(bullet => bullet.y > -10);
+
+            // Spawn de enemigos
+            if (Math.random() < 0.03) spawnEnemy();
+
+            // Verificar game over
+            if (player.health <= 0) {
+                gameOver = true;
+                ctx.fillStyle = "#ff0000";
+                ctx.font = "60px 'Courier New'";
+                ctx.fillText("WALLET DRAINED", canvas.width/2 - 200, canvas.height/2);
+            }
+        }
+
+        function draw() {
+            ctx.fillStyle = "#0a0a2a";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Dibujar enemigos
+            enemies.forEach(enemy => {
+                ctx.fillStyle = enemy.color;
+                ctx.beginPath();
+                ctx.arc(enemy.x, enemy.y, 20, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.fillStyle = "#ffffff";
+                ctx.font = "12px 'Courier New'";
+                ctx.fillText(enemy.name, enemy.x - 25, enemy.y + 30);
+            });
+
+            // Dibujar balas
+            ctx.fillStyle = "#ffff00";
+            bullets.forEach(bullet => {
+                ctx.beginPath();
+                ctx.arc(bullet.x, bullet.y, 3, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            drawPlayer();
+        }
+
+        function gameLoop() {
+            update();
+            draw();
+            requestAnimationFrame(gameLoop);
+        }
+
+        // Iniciar juego
+        gameLoop();
+        setInterval(spawnEnemy, 2000);
+    </script>
+</body>
+</html>
